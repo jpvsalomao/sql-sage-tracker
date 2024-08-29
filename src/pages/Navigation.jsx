@@ -24,19 +24,19 @@ const Navigation = () => {
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
               <Avatar className="h-16 w-16">
-                <AvatarImage src={user.avatar} alt={user.name} />
-                <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
+                <AvatarImage src={user?.avatar} alt={user?.name} />
+                <AvatarFallback>{user?.name?.charAt(0) || 'U'}</AvatarFallback>
               </Avatar>
               <div>
-                <h1 className="text-3xl font-bold">Welcome, {user.name}!</h1>
-                <p className="text-gray-600">Level {user.level} SQL Sage</p>
+                <h1 className="text-3xl font-bold">Welcome, {user?.name || 'User'}!</h1>
+                <p className="text-gray-600">Level {user?.level || 1} SQL Sage</p>
               </div>
             </div>
             <div className="text-right">
-              <p className="text-lg font-semibold">{user.badgesCount} Badges Earned</p>
+              <p className="text-lg font-semibold">{user?.badgesCount || 0} Badges Earned</p>
               <div className="flex items-center mt-2">
-                <Progress value={(user.completedTracks / user.totalTracks) * 100} className="w-64 mr-4" />
-                <span>{user.completedTracks}/{user.totalTracks} tracks completed</span>
+                <Progress value={((user?.completedTracks || 0) / (user?.totalTracks || 1)) * 100} className="w-64 mr-4" />
+                <span>{user?.completedTracks || 0}/{user?.totalTracks || 0} tracks completed</span>
               </div>
             </div>
           </div>
